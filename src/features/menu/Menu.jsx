@@ -8,8 +8,8 @@ const Menu = () => {
   console.log(menu);
 
   return (
-    <div>
-      <ul>
+    <div className="">
+      <ul className="divide-y divide-primary sm:grid sm:grid-cols-2 sm:divide-none lg:grid-cols-3">
         {menu.map((pizza) => (
           <MenuItem key={pizza.id} pizza={pizza} />
         ))}

@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components{
+    .input{
+        @apply rounded-xl  border px-4 py-2 outline-none;
+    }
+}

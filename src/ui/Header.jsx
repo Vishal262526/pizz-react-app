@@ -3,10 +3,16 @@ import Searchorder from "../features/order/Searchorder";
 
 const Header = () => {
   return (
-    <header>
-      <Link to="/">Fast React Pizza</Link>
+    <header className="flex items-center  justify-between bg-primary px-4 py-4 sm:justify-around sm:px-6">
+      <Link
+        className="text-white-900 text-md font-bold
+       uppercase text-white sm:text-2xl"
+        to="/"
+      >
+        PizzaHub
+      </Link>
       <Searchorder />
-      <p>Vishal</p>
+      <p className="hidden md:block">Vishal</p>
     </header>
   );
 };

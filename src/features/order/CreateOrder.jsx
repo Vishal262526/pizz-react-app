@@ -20,32 +20,70 @@ const faekCart = [
 
 const CreateOrder = () => {
   const cart = faekCart;
-  console.log(cart);
 
   return (
-    <Form method="POST">
-      <div>
-        <label htmlFor="fullname">Full Name</label>
-        <input id="fullname" type="text" name="customer " required />
-      </div>
-      <div>
-        <label htmlFor="phone">Phone Number</label>
-        <input id="phone" type="tel" name="phone " required />
-      </div>
-      <div>
-        <label htmlFor="address">Address</label>
-        <input id="address" type="text" name="address" required />
-      </div>
-      <div>
-        <label htmlFor="address">Priority</label>
-        <input type="checkbox" name="priority" id="priority" required />
-      </div>
-      <div>
-        {/* <button</button> */}
-        <input type="hidden" name="cart" value={JSON.stringify(cart)} />
-        <button>Order Now</button>
-      </div>
-    </Form>
+    <div className="mx-auto max-w-[700px] px-4 py-6">
+      <h2 className=" mb-8 text-xl font-semibold">
+        Ready to order let&apos;s go!
+      </h2>
+      <Form method="POST">
+        <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:items-center">
+          <label className="sm:basis-40" htmlFor="fullname">
+            Full Name
+          </label>
+          <input
+            className="input grow"
+            id="fullname"
+            type="text"
+            name="customer"
+            required
+          />
+        </div>
+        <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:items-center">
+          <label className="sm:basis-40" htmlFor="phone">
+            Phone Number
+          </label>
+          <input
+            className="input grow"
+            id="phone"
+            type="tel"
+            name="phone "
+            required
+          />
+        </div>
+        <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:items-center">
+          <label className="sm:basis-40" htmlFor="address">
+            Address
+          </label>
+          <input
+            className="input grow"
+            id="address"
+            type="text"
+            name="address"
+            required
+          />
+        </div>
+        <div className="mb-5 flex items-center ">
+          <input
+            className="h-5 w-5 accent-primary"
+            type="checkbox"
+            name="priority"
+            id="priority"
+            required
+          />
+          <label className="ms-2" htmlFor="address">
+            Do you want to give your order priority?
+          </label>
+        </div>
+        <div className="mb-5">
+          {/* <button</button> */}
+          <input type="hidden" name="cart" value={JSON.stringify(cart)} />
+          <button className="fontw-bold rounded-xl bg-primary px-4 py-2 text-white">
+            Order Now
+          </button>
+        </div>
+      </Form>
+    </div>
   );
 };
 
