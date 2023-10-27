@@ -4,7 +4,6 @@ export const getMenu = async () => {
   const res = await fetch(`${BASE_URL}/menu`);
   if (!res.ok) throw new Error("Failed getting Menu");
   const { data } = await res.json();
-
   return data;
 };
 

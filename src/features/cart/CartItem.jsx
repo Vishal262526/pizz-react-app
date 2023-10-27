@@ -1,7 +1,8 @@
 import PropTypes from "prop-types";
-import Button from "../../ui/Button";
+import DeleteCartItemButton from "./DeleteCartItemButton";
+import UpdateCartItemQuantity from "./UpdateCartItemQuantity";
 
-const CartItem = ({ name, quantity, totalPrice }) => {
+const CartItem = ({ id, name, quantity, totalPrice }) => {
   return (
     <li className="items-center justify-between py-3 sm:flex">
       <p className="mb-1 sm:mb-0">
@@ -9,7 +10,11 @@ const CartItem = ({ name, quantity, totalPrice }) => {
       </p>
       <div className="flex  items-center justify-between sm:gap-5">
         <p className="text-sm font-bold">${totalPrice}.00</p>
-        <Button>Delete Item</Button>
+        {/* <Button onClick={handleDeleteCartItem}>Delete Item</Button> */}
+        <div className="items-cetner nd:gap-4 flex gap-2">
+          <UpdateCartItemQuantity pizzaId={id} />
+          <DeleteCartItemButton pizzaId={id} />
+        </div>
       </div>
     </li>
   );
@@ -18,6 +23,7 @@ const CartItem = ({ name, quantity, totalPrice }) => {
 CartItem.propTypes = {
   name: PropTypes.node.isRequired,
   quantity: PropTypes.node.isRequired,
+  id: PropTypes.node.isRequired,
   totalPrice: PropTypes.node.isRequired,
 };
 

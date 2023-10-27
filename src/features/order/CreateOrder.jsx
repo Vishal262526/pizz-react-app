@@ -1,5 +1,6 @@
 import { Form } from "react-router-dom";
 import { createOrder } from "../../services/apiResturant";
+import { useSelector } from "react-redux";
 
 const faekCart = [
   {
@@ -21,6 +22,8 @@ const faekCart = [
 const CreateOrder = () => {
   const cart = faekCart;
 
+  const { username } = useSelector((state) => state.user);
+
   return (
     <div className="mx-auto max-w-[700px] px-4 py-6">
       <h2 className=" mb-8 text-xl font-semibold">
@@ -34,6 +37,7 @@ const CreateOrder = () => {
           <input
             className="input grow"
             id="fullname"
+            defaultValue={username}
             type="text"
             name="customer"
             required

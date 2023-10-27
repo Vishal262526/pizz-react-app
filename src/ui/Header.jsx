@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 import Searchorder from "../features/order/Searchorder";
+import { useSelector } from "react-redux";
 
 const Header = () => {
+  const { username } = useSelector((state) => state.user);
+
   return (
     <header className="flex items-center  justify-between bg-primary px-4 py-4 sm:justify-around sm:px-6">
       <Link
@@ -12,7 +15,7 @@ const Header = () => {
         PizzaHub
       </Link>
       <Searchorder />
-      <p className="hidden md:block">Vishal</p>
+      <p className="hidden md:block">{username}</p>
     </header>
   );
 };
