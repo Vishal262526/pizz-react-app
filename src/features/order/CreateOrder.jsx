@@ -1,27 +1,9 @@
 import { Form } from "react-router-dom";
 import { createOrder } from "../../services/apiResturant";
 import { useSelector } from "react-redux";
-
-const faekCart = [
-  {
-    pizzaId: 12,
-    name: "Pizza 12",
-    quantity: 2,
-    unitPrice: 16,
-    totalPrice: 32,
-  },
-  {
-    pizzaId: 6,
-    name: "Pizza 6",
-    quantity: 4,
-    unitPrice: 8,
-    totalPrice: 23,
-  },
-];
-
+import { getCart } from "../cart/cartSlice";
 const CreateOrder = () => {
-  const cart = faekCart;
-
+  const cart = useSelector(getCart);
   const { username } = useSelector((state) => state.user);
 
   return (
@@ -99,9 +81,10 @@ export const action = async ({ request }) => {
 
   const order = {
     ...data,
-    cart: JSON.parse(data.cart),
     priority: data.priority === "on",
   };
+
+  console.log("Order is ... ", order);
 
   const newOrder = await createOrder(order);
   console.log("Order is ");

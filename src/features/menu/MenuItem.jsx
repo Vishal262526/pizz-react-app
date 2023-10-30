@@ -37,7 +37,7 @@ const MenuItem = ({ pizza }) => {
       />
       <div className="flex grow flex-col">
         <p className=" text-2xl font-bold">{name}</p>
-        <p className="text-md font-light">{ingredients.join(", ")}</p>
+        <p className="text-md font-light">{ingredients}</p>
         <div className="mt-auto flex  items-center justify-between gap-3  text-sm font-bold">
           {!soldOut ? (
             <p>${unitPrice}</p>

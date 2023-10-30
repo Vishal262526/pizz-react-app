@@ -20,6 +20,8 @@ const Menu = () => {
 
 export const loader = async () => {
   const menu = await getMenu();
+
+  console.log("menu is ", menu);
   return menu;
 };
 

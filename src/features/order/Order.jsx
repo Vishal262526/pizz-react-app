@@ -1,49 +1,49 @@
 import { useLoaderData } from "react-router-dom";
 import { getOrder } from "../../services/apiResturant";
-import { calcMinuteLeft, formatCurrency, formatDate } from "../../utils/helper";
+// import { formatCurrency } from "../../utils/helper";
 import OrderItem from "./OrderItem";
 
 const Order = () => {
   const {
     id,
-    status,
+    orderStatus,
     priority,
-    priorityPrice,
-    orderPice,
-    estimateDelivery,
+    // priorityPrice,
+    // orderPice,
+    // estimateDelivery,
     cart,
   } = useLoaderData();
 
-  const deliveryIn = calcMinuteLeft(estimateDelivery);
+  // const deliveryIn = calcMinuteLeft(estimateDelivery);
 
   return (
     <div className="space-y-8 px-4 py-6">
       <div className="flex flex-wrap items-center justify-between gap-2">
         <h2 className="text-xl font-semibold">
-          Order #{id} {status}
+          Order #{id} {orderStatus}
         </h2>
         <div className="space-x-2">
           {priority && (
-            <span className="bg-red-500 text-red-50 rounded-full px-3 py-1 text-sm font-semibold uppercase tracking-wide">
+            <span className="rounded-full bg-red-500 px-3 py-1 text-sm font-semibold uppercase tracking-wide text-red-50">
               Priority{" "}
             </span>
           )}
-          <span className="bg-green-500 text-green-50 rounded-full px-3 py-1 text-sm font-semibold uppercase tracking-wide">
+          <span className="rounded-full bg-green-500 px-3 py-1 text-sm font-semibold uppercase tracking-wide text-green-50">
             {status} Order
           </span>
         </div>
       </div>
 
-      <div className="bg-stone-100  flex flex-wrap items-center justify-between gap-2 px-6 py-5">
-        <p className="font-medium">
+      <div className="flex  flex-wrap items-center justify-between gap-2 bg-stone-100 px-6 py-5">
+        {/* <p className="font-medium">
           {deliveryIn >= 0
             ? `Only ${calcMinuteLeft(estimateDelivery)}`
             : "Order should have arrived"}
-        </p>
+        </p> */}
 
-        <p className="text-stone-500 text-xs">
+        {/* <p className="text-xs text-stone-500">
           Estimated Delivery : {formatDate(estimateDelivery)}
-        </p>
+        </p> */}
       </div>
 
       <ul className="divide-stron-200 divide-y border-b border-t">
@@ -52,25 +52,24 @@ const Order = () => {
         ))}
       </ul>
 
-      <div className="bg-stone-100 space-y-2 px-6 py-5">
-        <p className="text-stone-600 text-sm font-medium">
+      <div className="space-y-2 bg-stone-100 px-6 py-5">
+        {/* <p className="text-sm font-medium text-stone-600">
           Price Pizza : {formatCurrency(orderPice)}
-        </p>
-        {priority && (
-          <p className="text-stone-600 text-sm font-medium">
-            Pricing Priority: {formatCurrency(priorityPrice)}
-          </p>
-        )}
-        <p className="font-bold">
+        </p> */}
+        {/* {priority && (
+          // <p className="text-sm font-medium text-stone-600">
+          //   Pricing Priority: {formatCurrency(priorityPrice)}
+          // </p>
+        )} */}
+        {/* <p className="font-bold">
           To pay on delivery {formatCurrency(orderPice + priorityPrice)}
-        </p>
+        </p> */}
       </div>
     </div>
   );
 };
 
 export const loader = async ({ params }) => {
-  console.log(params.orderId);
   const order = await getOrder(params.orderId);
   return order;
 };
